@@ -42,9 +42,16 @@ class App extends React.Component{
     if (!this.state.selectedDate) return null
     return(
       <div>
-        <Delivery selected={this.state.selectedDate} handleModal={this.handleModal} />
+        <Delivery
+          selected={this.state.selectedDate}
+          handleModal={this.handleModal}
+        />
         {this.state.modal &&
-          <Modal handleModal={this.handleModal} />
+          <Modal
+            handleModal={this.handleModal}
+            dates={this.state.dates}
+            selected={this.state.selectedDate}
+          />
         }
       </div>
     )

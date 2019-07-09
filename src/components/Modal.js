@@ -26,6 +26,23 @@ class Modal extends React.Component{
         <div className="modal-background" onClick={this.collapseModal}>
         </div>
         <div className="modal-calendar">
+          <div className="dates">
+            {this.props.dates.map((date, index) => {
+              return <div
+                key={index}
+                className={`${
+                  date.is_deliverable ?
+                    '':'disabled'} ${
+                  date.date.getTime() === this.props.selected.date.getTime() ?
+                    'selected':''}`}
+              >
+                <span className="date-num">
+                  {date.date.getDate()}
+                </span>
+              </div>
+            }
+            )}
+          </div>
         </div>
       </div>
     )

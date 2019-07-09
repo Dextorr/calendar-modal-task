@@ -12,7 +12,7 @@ $Yellow: rgb(240, 225, 24);
 $Red: rgb(230, 108, 85);
 $Pink: rgb(242, 196, 196);
 $Blue: rgb(29, 108, 147);
-$Grey: rgb(240, 240, 240);
+$Grey: rgb(200, 200, 200);
 
 $CalendarIconSize: 50px;
 
@@ -38,7 +38,7 @@ h1, p {
 
   h1 {
     font-size: 28px;
-    font-family: 'Cooper Hewitt';
+    font-family: 'Cooper Hewitt', sans-serif;
   }
 
   .free-delivery{
@@ -148,5 +148,49 @@ h1, p {
     height: 30%;
     background: #fff;
     z-index: 3;
+
+    .dates {
+      display: flex;
+      width: 90%;
+      margin: auto;
+      justify-content: space-around;
+      flex-wrap: wrap;
+
+      div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 2px;
+        width: calc(100%/7 - 4px);
+        border: 1px solid $Red;
+        color: $Red;
+        font-family: 'GT Pressura Mono', sans-serif;
+        font-size: 20px;
+        text-align: center;
+        cursor: pointer;
+
+        &:after {
+          content: '';
+          display: block;
+          padding-bottom: 100%;
+        }
+
+        &.selected, &:hover {
+          background: $Red;
+          color: #fff;
+        }
+
+        &.disabled {
+          cursor: not-allowed;
+          background: $Grey;
+          border-color: $Grey;
+          color: darken($Grey, 25%);
+        }
+
+        .date-num {
+          position: absolute;
+        }
+      }
+    }
   }
 }
