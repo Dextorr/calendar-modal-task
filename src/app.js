@@ -34,7 +34,7 @@ class App extends React.Component{
   }
 
   handleModal(e){
-    e.preventDefault()
+    if(e) e.preventDefault()
     this.setState({ modal: !this.state.modal })
   }
 
@@ -42,11 +42,9 @@ class App extends React.Component{
     if (!this.state.selectedDate) return null
     return(
       <div>
-        {
-          this.state.modal ?
-            <Modal handleModal={this.handleModal} />
-            :
-            <Delivery selected={this.state.selectedDate} handleModal={this.handleModal} />
+        <Delivery selected={this.state.selectedDate} handleModal={this.handleModal} />
+        {this.state.modal &&
+          <Modal handleModal={this.handleModal} />
         }
       </div>
     )

@@ -120,11 +120,21 @@ h1, p {
 // MODAL COMPONENT *************************************************************
 
 .modal {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 2;
+
+  &.displayed {
+    opacity: 1;
+  }
 
   .modal-background {
     width: 100%;
@@ -137,6 +147,6 @@ h1, p {
     width: 40%;
     height: 30%;
     background: #fff;
-    z-index: 1;
+    z-index: 3;
   }
 }
