@@ -1,16 +1,23 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
+import Delivery from './components/Delivery'
+
 import './style.scss'
 
 class App extends React.Component{
+  constructor(){
+    super()
+
+    this.state = {
+      today: null
+    }
+  }
+
   render(){
     return(
       <div>
-        <h1>Hello World!</h1>
-        <h2 className="cooper">Cooper</h2>
-        <h2 className="press-reg">GT Pressura Reg</h2>
-        <h2 className="press-mon">GT Pressura Mono</h2>
+        <Delivery />
       </div>
     )
   }
