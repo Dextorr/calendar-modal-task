@@ -4,6 +4,10 @@
 @include font-face('GT Pressura', assets/fonts/GT-Pressura-Regular, null, null, eot woff woff2 ttf);
 @include font-face('GT Pressura Mono', assets/fonts/GTPressuraMono);
 
+@mixin bottomBorder{
+  border-bottom: 2px solid $Grey;
+}
+
 $Yellow: rgb(240, 225, 24);
 $Red: rgb(230, 108, 85);
 $Pink: rgb(242, 196, 196);
@@ -24,6 +28,7 @@ h1, p {
   color: $Blue;
 }
 
+// DELIVERY COMPONENT **********************************************************
 
 .delivery{
   display: flex;
@@ -41,7 +46,7 @@ h1, p {
     align-items: center;
     justify-content: flex-start;
     background: lighten($Blue, 60%);
-    border-bottom: 2px solid #ccc;
+    @include bottomBorder();
 
     .van {
       margin: 0 10px;
@@ -65,7 +70,7 @@ h1, p {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    border-bottom: 2px solid #ccc;
+    @include bottomBorder();
 
     .calendar {
       display: flex;
@@ -108,5 +113,30 @@ h1, p {
       margin-left: auto;
       padding: 4px 8px;
     }
+  }
+}
+
+
+// MODAL COMPONENT *************************************************************
+
+.modal {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .modal-background {
+    width: 100%;
+    height: 100%;
+    background: #444;
+  }
+
+  .modal-calendar {
+    position: absolute;
+    width: 40%;
+    height: 30%;
+    background: #fff;
+    z-index: 1;
   }
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Delivery = ({ selected }) => {
+const Delivery = ({ selected, handleModal }) => {
 
   return(
     <div className="delivery">
@@ -21,7 +21,7 @@ const Delivery = ({ selected }) => {
         <p>
           {selected.date.toString().substr(0, 10)}
         </p>
-        <a href="">Change</a>
+        <a href="" onClick={handleModal}>Change</a>
       </div>
     </div>
   )
