@@ -1,3 +1,9 @@
+@import './mixins.scss';
+
+@include font-face('Cooper Hewitt', assets/fonts/CooperHewitt-Bold);
+@include font-face('GT Pressura', assets/fonts/GT-Pressura-Regular, null, null, eot woff woff2 ttf);
+@include font-face('GT Pressura Mono', assets/fonts/GTPressuraMono);
+
 $Yellow: rgb(240, 225, 24);
 $Red: rgb(230, 108, 85);
 $Pink: rgb(242, 196, 196);
@@ -6,4 +12,16 @@ $Grey: rgb(240, 240, 240);
 
 h1 {
   color: $Red;
+}
+
+.cooper {
+  font-family: 'Cooper Hewitt', sans-serif;
+}
+
+.press-reg {
+  font-family: 'GT Pressura', sans-serif;
+}
+
+.press-mon {
+  font-family: 'GT Pressura Mono', monospace;
 }
