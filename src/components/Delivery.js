@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Delivery = () => {
+const Delivery = ({ selected }) => {
 
   return(
     <div className="delivery">
@@ -16,10 +16,10 @@ const Delivery = () => {
       <div className="delivery-date">
         <span className="calendar">
           <img src="../assets/images/calendar.svg" alt="calendar icon" />
-          <p>01</p>
+          <p>{selected.date.getDate()}</p>
         </span>
         <p>
-          Delivery Date
+          {selected.date.toString().substr(0, 10)}
         </p>
         <a href="">Change</a>
       </div>
