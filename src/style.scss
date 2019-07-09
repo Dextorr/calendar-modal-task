@@ -232,6 +232,19 @@ h1, p {
       align-items: center;
       margin: 25px auto;
       box-shadow: 1px 1px 4px 1px #777;
+      cursor: pointer;
+      transition: box-shadow 0.2s ease;
+      transition: transform 0.2s ease;
+
+      &:hover {
+        background: $Blue;
+        color: #fff;
+      }
+
+      &:active {
+        box-shadow: none;
+        transform: scale(0.98)
+      }
     }
   }
 }
