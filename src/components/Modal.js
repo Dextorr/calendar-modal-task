@@ -5,7 +5,8 @@ class Modal extends React.Component{
     super(props)
 
     this.state = {
-      displayed: false
+      displayed: false,
+      currentMonths: []
     }
 
     this.collapseModal = this.collapseModal.bind(this)
@@ -17,7 +18,13 @@ class Modal extends React.Component{
   }
 
   componentDidMount(){
-    setTimeout(() => this.setState({ displayed: true }), 10)
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+    const currentMonths = []
+    this.props.dates.forEach(date => {
+      const currentMonth = months[date.date.getMonth()]
+      if(!currentMonths.includes(currentMonth)) currentMonths.push(currentMonth)
+    })
+    setTimeout(() => this.setState({ displayed: true, currentMonths }), 10)
   }
 
   render(){
@@ -26,10 +33,17 @@ class Modal extends React.Component{
         <div className="modal-background" onClick={this.collapseModal}>
         </div>
         <div className="modal-calendar">
+          <h2>{this.state.currentMonths.join('/')}</h2>
+          <div className="days">
+            {this.props.dates.map((date, i) => {
+              const days = ['S', 'M', 'T', 'W', 'T', 'F', 'S']
+              if (i<=6)return <p key={i}>{days[date.date.getDay()]}</p>
+            })}
+          </div>
           <div className="dates">
-            {this.props.dates.map((date, index) => {
+            {this.props.dates.map((date, i) => {
               return <div
-                key={index}
+                key={i}
                 className={`${
                   date.is_deliverable ?
                     '':'disabled'} ${
@@ -42,6 +56,9 @@ class Modal extends React.Component{
               </div>
             }
             )}
+          </div>
+          <div className="button">
+            <span>GOT IT</span>
           </div>
         </div>
       </div>
