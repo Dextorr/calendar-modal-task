@@ -4,8 +4,14 @@
 @include font-face('GT Pressura', assets/fonts/GT-Pressura-Regular, null, null, eot woff woff2 ttf);
 @include font-face('GT Pressura Mono', assets/fonts/GTPressuraMono);
 
-@mixin bottomBorder{
+@mixin bottomBorder(){
   border-bottom: 2px solid $Grey;
+}
+
+@mixin centeredFlex(){
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 $Yellow: rgb(240, 225, 24);
@@ -77,9 +83,7 @@ h1, p {
     @include bottomBorder();
 
     .calendar {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      @include centeredFlex();
       border-radius: 100%;
       margin-right: 10px;
       width: $CalendarIconSize;
@@ -93,10 +97,9 @@ h1, p {
         width: 30px;
         height: 26px;
         z-index: 1;
-        text-align: right;
+        text-align: center;
         font-size: 16px;
-        padding-top: 6px;
-        padding-right: 3px;
+        padding: 6px 0;
       }
 
       img {
@@ -116,6 +119,12 @@ h1, p {
       font-family: 'GT Pressura', sans-serif;
       margin-left: auto;
       padding: 4px 8px;
+      transition: all 0.2s ease;
+
+      &:hover {
+        transform: scale(1.1);
+        background: lighten($Blue, 40%);
+      }
     }
   }
 }
@@ -124,14 +133,12 @@ h1, p {
 // MODAL COMPONENT *************************************************************
 
 .modal {
+  @include centeredFlex();
   position: absolute;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   opacity: 0;
   transition: opacity 0.2s ease;
   z-index: 2;
@@ -154,7 +161,7 @@ h1, p {
   // MODAL CONTENT
   .modal-calendar {
     position: absolute;
-    width: 40%;
+    width: 400px;
     background: #fff;
     z-index: 3;
     transition: transform 0.5s ease;
@@ -189,9 +196,7 @@ h1, p {
       flex-wrap: wrap;
 
       div {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        @include centeredFlex();
         margin: 2px;
         width: calc(100%/7 - 4px);
         border: 1px solid $Red;
@@ -200,6 +205,7 @@ h1, p {
         font-size: 20px;
         text-align: center;
         cursor: pointer;
+        transition: background 0.3s ease;
 
         &:after {
           content: '';
@@ -227,6 +233,7 @@ h1, p {
     }
 
     .button {
+      @include centeredFlex();
       font-family: 'Cooper Hewitt', sans-serif;
       font-size: 14px;
       color: $Blue;
@@ -234,14 +241,10 @@ h1, p {
       border: 1px solid $Blue;
       border-radius: 3px;
       height: 40px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       margin: 25px auto;
       box-shadow: 1px 1px 4px 1px #777;
       cursor: pointer;
-      transition: box-shadow 0.2s ease;
-      transition: transform 0.2s ease;
+      transition: all 0.2s ease;
 
       &:hover {
         background: $Blue;

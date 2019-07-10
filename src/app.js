@@ -28,6 +28,7 @@ class App extends React.Component{
         date: new Date(date.date)
       }
     })
+
     // Set selectedDate to be first deliverable date
     const selectedDate = data.dates.filter(date => date.is_deliverable)[0]
     selectedDate.date = new Date(selectedDate.date)
@@ -35,26 +36,30 @@ class App extends React.Component{
   }
 
   handleModal(e){
+    // Prevent change 'a' tag from refreshing the page
     if(e) e.preventDefault()
     this.setState({ modal: !this.state.modal })
   }
 
   handleDate({ target }){
     const selectedDate = {
-      date: new Date(target.dataset.date),
-      is_deliverable: true
+      ...this.state.selectedDate,
+      date: new Date(target.dataset.date)
     }
     this.setState({ selectedDate })
   }
 
   render(){
     if (!this.state.selectedDate) return null
+
     return(
       <div>
+
         <Delivery
           selected={this.state.selectedDate}
           handleModal={this.handleModal}
         />
+
         {this.state.modal &&
           <Modal
             handleModal={this.handleModal}
@@ -63,6 +68,7 @@ class App extends React.Component{
             handleDate={this.handleDate}
           />
         }
+
       </div>
     )
   }
