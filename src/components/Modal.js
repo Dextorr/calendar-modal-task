@@ -49,6 +49,8 @@ class Modal extends React.Component{
                     '':'disabled'} ${
                   date.date.getTime() === this.props.selected.date.getTime() ?
                     'selected':''}`}
+                data-date={date.date}
+                onClick={this.props.handleDate}
               >
                 <span className="date-num">
                   {date.date.getDate()}
@@ -57,7 +59,7 @@ class Modal extends React.Component{
             }
             )}
           </div>
-          <div className="button">
+          <div className="button" onClick={this.props.handleModal}>
             <span>GOT IT</span>
           </div>
         </div>

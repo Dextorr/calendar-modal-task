@@ -17,6 +17,7 @@ class App extends React.Component{
     }
 
     this.handleModal = this.handleModal.bind(this)
+    this.handleDate = this.handleDate.bind(this)
   }
 
   componentDidMount(){
@@ -38,6 +39,14 @@ class App extends React.Component{
     this.setState({ modal: !this.state.modal })
   }
 
+  handleDate({ target }){
+    const selectedDate = {
+      date: new Date(target.dataset.date),
+      is_deliverable: true
+    }
+    this.setState({ selectedDate })
+  }
+
   render(){
     if (!this.state.selectedDate) return null
     return(
@@ -51,6 +60,7 @@ class App extends React.Component{
             handleModal={this.handleModal}
             dates={this.state.dates}
             selected={this.state.selectedDate}
+            handleDate={this.handleDate}
           />
         }
       </div>
