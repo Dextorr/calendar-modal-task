@@ -28,7 +28,7 @@ class Modal extends React.Component{
     })
 
     // Timeout to ensure that the modal animation starts after the component is rendered initially
-    setTimeout(() => this.setState({ displayed: true, currentMonths }), 10)
+    setTimeout(() => this.setState({ displayed: true, currentMonths }), 1)
   }
 
   render(){
